@@ -1,0 +1,32 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+usuarios:
+  path: /usuarios
+  controller: App\Controller\UsuarioController::BuscarTodos
+  methods:
+    - GET
+
+usuario:
+  path: /usuarios/{id}
+  controller: App\Controller\UsuarioController::BuscarPorID
+  methods:
+    - GET
+
+excluir_usuario:
+  path: /usuarios/{id}
+  controller: App\Controller\UsuarioController::Excluir
+  methods:
+    - DELETE
+
+criar_usuario:
+  path: /usuarios
+  controller: App\Controller\UsuarioController::Inserir
+  methods:
+    - POST
+    -
+atualizar_usuario:
+  path: /usuarios/{id}
+  controller: App\Controller\UsuarioController::Atualizar
+  methods:
+    - PUT
