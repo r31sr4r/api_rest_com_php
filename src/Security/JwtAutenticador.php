@@ -2,7 +2,7 @@
 
 namespace App\Security;
 
-use App\Repository\UserRepository;
+use App\Repository\UsuarioRepository;
 use Firebase\JWT\JWT;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,12 +16,12 @@ use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
 class JwtAutenticador extends AbstractGuardAuthenticator
 {
     /**
-     * @var UserRepository
+     * @var UsuarioRepository
      */
     private $repository;
 
     public function __construct(
-        UserRepository $repository
+        UsuarioRepository $repository
     )
     {
         $this->repository = $repository;
@@ -40,7 +40,7 @@ class JwtAutenticador extends AbstractGuardAuthenticator
     public function getCredentials(Request $request)
     {
         $token = str_replace(
-            'Beaer ',
+            'Bearer ',
             '',
             $request->headers->get('Authorization'));
 

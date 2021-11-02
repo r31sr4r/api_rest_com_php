@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Repository\UserRepository;
+use App\Repository\UsuarioRepository;
 use Firebase\JWT\JWT;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -14,7 +14,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class LoginController extends AbstractController
 {
     /**
-     * @var UserRepository
+     * @var UsuarioRepository
      */
     private $repository;
     /**
@@ -23,7 +23,7 @@ class LoginController extends AbstractController
     private $encoder;
 
     public function __construct(
-        UserRepository $repository,
+        UsuarioRepository $repository,
         UserPasswordEncoderInterface $encoder
     )
     {
