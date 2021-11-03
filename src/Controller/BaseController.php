@@ -5,12 +5,14 @@ namespace App\Controller;
 use App\Helper\EntidadeFactory;
 use App\Helper\ExtratorDadosRequest;
 use App\Helper\ResponseFactory;
+use App\Repository\UsuarioRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 abstract class BaseController extends AbstractController
 {
@@ -31,24 +33,34 @@ abstract class BaseController extends AbstractController
      * @var ExtratorDadosRequest
      */
     private $extratorDadosRequest;
+    /**
+     * @var UserPasswordEncoderInterface
+     */
+    private $encoder;
 
     public function __construct(
         ObjectRepository $repository,
         EntityManagerInterface $entityManager,
         EntidadeFactory $entidadeFactory,
-        ExtratorDadosRequest $extratorDadosRequest
+        ExtratorDadosRequest $extratorDadosRequest,
+        UserPasswordEncoderInterface $encoder
     )
     {
         $this->repository = $repository;
         $this->entityManager = $entityManager;
         $this->entidadeFactory = $entidadeFactory;
         $this->extratorDadosRequest = $extratorDadosRequest;
+        $this->encoder = $encoder;
     }
 
     public function Inserir(Request $request): Response
     {
         $corpoRequisicao = $request->getContent();
         $entity = $this->entidadeFactory->CriarEntidade($corpoRequisicao);
+
+        $encoded = $this->encoder->encodePassword($entity, $entity->getPassword());
+
+        $entity->setPassword($encoded);
 
         $this->entityManager->persist($entity);
         $this->entityManager->flush();

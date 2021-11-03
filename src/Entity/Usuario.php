@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use App\Repository\UsuarioRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -11,6 +13,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class Usuario implements \JsonSerializable, UserInterface, PasswordAuthenticatedUserInterface
 {
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -189,6 +192,8 @@ class Usuario implements \JsonSerializable, UserInterface, PasswordAuthenticated
         $this->password = $password;
 
         return $this;
+
+
     }
 
     /**
@@ -210,8 +215,6 @@ class Usuario implements \JsonSerializable, UserInterface, PasswordAuthenticated
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
-
-
 
 
 }

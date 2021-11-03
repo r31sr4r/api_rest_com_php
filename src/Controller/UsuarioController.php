@@ -7,6 +7,7 @@ use App\Helper\ExtratorDadosRequest;
 use App\Helper\UsuarioFactory;
 use App\Repository\UsuarioRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
 class UsuarioController extends BaseController
@@ -16,10 +17,11 @@ class UsuarioController extends BaseController
         EntityManagerInterface $entityManager,
         UsuarioFactory $usuarioFactory,
         UsuarioRepository $repository,
-        ExtratorDadosRequest $extratorDadosRequest
+        ExtratorDadosRequest $extratorDadosRequest,
+        UserPasswordEncoderInterface $encoder
     )
     {
-        parent::__construct($repository, $entityManager, $usuarioFactory, $extratorDadosRequest);
+        parent::__construct($repository, $entityManager, $usuarioFactory, $extratorDadosRequest, $encoder);
     }
 
 
@@ -38,8 +40,8 @@ class UsuarioController extends BaseController
             ->setUsername($entidadeEnviada->getUsername())
             ->setCpf($entidadeEnviada->getCpf())
             ->setRg($entidadeEnviada->getRg())
-            ->setEmail($entidadeEnviada->getEmail())
-            ->setPassword($entidadeEnviada->getPassword());
+            ->setEmail($entidadeEnviada->getEmail());
+            //->setPassword($entidadeEnviada->getPassword());
     }
 
 }

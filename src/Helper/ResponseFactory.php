@@ -56,6 +56,7 @@ class ResponseFactory
             unset($conteudoResposta['itensPorPagina']);
         }
 
+
         return new JsonResponse($conteudoResposta, $this->statusResposta);
     }
 
