@@ -188,7 +188,7 @@ Obs.: Esta rota não necessita de autenticação via token
 
 ## 📌 Versão
 
-Nós usamos [SemVer](http://semver.org/) para controle de versão. Para as versões disponíveis, observe as [tags neste repositório](https://github.com/suas/tags/do/projeto). 
+v0.1.1
 
 ## 🎁 Expressões de gratidão
 
