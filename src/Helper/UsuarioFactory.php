@@ -14,9 +14,11 @@ class UsuarioFactory implements EntidadeFactory
         $usuario = new Usuario();
         $usuario
             ->setNome($usuarioEmJson->nome)
+            ->setUsername($usuarioEmJson->username)
             ->setCpf($usuarioEmJson->cpf)
             ->setRg($usuarioEmJson->rg)
-            ->setSenha($usuarioEmJson->senha);
+            ->setEmail($usuarioEmJson->email)
+            ->setPassword($usuarioEmJson->password);
 
         return $usuario;
     }

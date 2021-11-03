@@ -7,7 +7,7 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Entity(repositoryClass=UsuarioRepository::class)
+ * @ORM\Entity
  */
 class Usuario implements \JsonSerializable, UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -115,9 +115,11 @@ class Usuario implements \JsonSerializable, UserInterface, PasswordAuthenticated
         return [
             'id' => $this->getId(),
             'nome' => $this->getNome(),
+            'username' => $this->getUsername(),
             'cpf' => $this->getCpf(),
             'rg' => $this->getRg(),
-            'senha' => $this->getSenha(),
+            'email' => $this->getEmail(),
+            'password' => $this->getPassword(),
             '_links' => [
                 'rel' => 'self',
                 'path' => '/usuarios/' . $this->getId()
@@ -128,16 +130,21 @@ class Usuario implements \JsonSerializable, UserInterface, PasswordAuthenticated
     /**
      * @deprecated since Symfony 5.3, use getUserIdentifier instead
      */
-    public function getUsername(): string
+    public function getUsername(): ?string
     {
         return (string) $this->username;
     }
 
-    public function setUsername(string $username): self
+    /**
+     * @param mixed $username
+     */
+    public function setUsername(string $username): ?self
     {
         $this->username = $username;
 
         return $this;
+
+
     }
 
     /**

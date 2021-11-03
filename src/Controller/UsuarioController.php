@@ -35,9 +35,11 @@ class UsuarioController extends BaseController
 
         $entidadeExistente
             ->setNome($entidadeEnviada->getNome())
+            ->setUsername($entidadeEnviada->getUsername())
             ->setCpf($entidadeEnviada->getCpf())
             ->setRg($entidadeEnviada->getRg())
-            ->setSenha($entidadeEnviada->getSenha());
+            ->setEmail($entidadeEnviada->getEmail())
+            ->setPassword($entidadeEnviada->getPassword());
     }
 
 }
