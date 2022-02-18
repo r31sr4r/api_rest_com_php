@@ -1,10 +1,10 @@
 # CRUD de Usuários -> API REST em PHP
 
-Desafio processo seletivo para vaga -> Pessoa desenvolvedora Back-End (Vaga Remota)
+Descrição do projeto
 
 - API desenvolvida em PHP;
 - API Stateless;
-- A API utiliza a última versão do framework Symfony (5.3.10);
+- A API utiliza a seguinte versão do framework Symfony: 5.3.10;
 - As informações do usuário persistem no banco de dados MySql;
 - Está sendo utilizado o ORM Doctrine.
 
@@ -189,10 +189,6 @@ Obs.: Esta rota não necessita de autenticação via token
 ## 📌 Versão
 
 v0.1.1
-
-## 🎁 Expressões de gratidão
-
-* Agradeço à equipe da Promobit pela oportunidade de participar de um processo seletivo de alto nível como este.
 
 ---
 ⌨️ por [Rafael Reis](https://github.com/r31sr4r)
